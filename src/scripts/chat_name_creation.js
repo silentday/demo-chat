@@ -3,6 +3,7 @@ const fs = require('fs');
 const userFile = 'src/assets/users.json';
 const newUserFile = 'src/assets/newUsers.json';
 
+console.log('Reading ' + userFile);
 fs.readFile(userFile, 'utf8', (err, data) => {
   if(err) {
     console.log("Unable to read file because: " + err)
@@ -19,12 +20,13 @@ fs.readFile(userFile, 'utf8', (err, data) => {
       user.chatName = firstName + lastName
     });
 
-    const newResults = JSON.stringify(file);
+    const newResults = JSON.stringify(users);
+    console.log('Writting ' + newUserFile);
     fs.writeFile(newUserFile, newResults, 'utf8', (err) => {
       if(err){
         console.log("Something went horribly wrong writting this file: " + err);
       } else {
-        console.log("SUCCESS! src/assets/newUsers.json written successfully")
+        console.log('SUCCESS! ' + newUserFile + ' written successfully.')
       }
     })
   }
