@@ -9,10 +9,13 @@ import { ChatComponent } from "./chat/chat.component";
 import { DataService } from "./data.service";
 import { DB } from "./db.service";
 
+import { NgAisModule } from 'angular-instantsearch';
+import { ChatNameSearchDirective } from './chatNameSearch/chat-name-search.directive';
+
 @NgModule({
-  imports: [BrowserModule, HttpClientModule, FormsModule],
+  imports: [BrowserModule, HttpClientModule, FormsModule, NgAisModule.forRoot()],
   providers: [DataService, DB],
-  declarations: [AppComponent, ChatComponent],
+  declarations: [AppComponent, ChatComponent, ChatNameSearchDirective],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
