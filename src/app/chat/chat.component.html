@@ -25,6 +25,11 @@
 						<img [src]="user?.picture?.thumbnail" class="author-thumbnail"/>
 					</div>
 				<input id="message" name="message" type="text" [(ngModel)]="model.text" class="form-control"/>
+        <div id="autoList">
+          <div class="searchbox">
+            <app-autocomplete (onQuerySuggestionClick)="setQuery($event)"></app-autocomplete>
+          </div>
+        </div>
 				<div class="input-group-append">
 					<button type="submit" class="btn btn-primary btn-success">Send</button>
 				</div>
@@ -32,5 +37,5 @@
 		</div>
 	</div>
 
-	
+
 </form>

@@ -4,8 +4,12 @@ import { IChat } from "../../model/chat";
 import { DataService } from "../data.service";
 import { DB } from "../db.service";
 
+import algoliasearch  from 'algoliasearch/lite';
 // class Chat implements IChat {}
-
+const searchClient = algoliasearch(
+  'ZMW795USLT',
+  'fde9aa6b748278c62d8ac3a4502072ac'
+);
 @Component({
   selector: "app-chat",
   templateUrl: "./chat.component.html",
@@ -24,12 +28,26 @@ export class ChatComponent implements AfterViewInit {
     this.model = {} as IChat;
   }
 
+  config = {
+    indexName: 'demo_ecommerce',
+    searchClient
+  };
+
+  public searchParameters = {
+    query: ''
+  };
+
+  public setQuery({ query }: { query: string }) {
+    this.searchParameters.query = query;
+  }
+
   constructor(private dataSvc: DataService, private firebase: DB) {
     this.dataSvc.getUser().subscribe((res: any) => {
       this.user = res.results[0];
     });
 
     this.resetModel();
+
   }
 
   /**
