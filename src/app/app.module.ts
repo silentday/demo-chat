@@ -11,14 +11,12 @@ import { DB } from "./db.service";
 
 
 import { NgAisModule } from 'angular-instantsearch';
-import { MatAutocompleteModule } from '@angular/material/autocomplete';
-import { MatInputModule } from '@angular/material/input';
 
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { ChatNameSearchComponent } from './chat-name-search/chat-name-search.component';
 @NgModule({
-  imports: [BrowserModule, HttpClientModule, FormsModule, MatAutocompleteModule, MatInputModule, NgAisModule.forRoot(), BrowserAnimationsModule],
+  imports: [BrowserModule, HttpClientModule, FormsModule, NgAisModule.forRoot(), BrowserAnimationsModule, MatAutoComplete],
   providers: [DataService, DB],
   declarations: [AppComponent, ChatComponent, ChatNameSearchComponent],
   bootstrap: [AppComponent],
