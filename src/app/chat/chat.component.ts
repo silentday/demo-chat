@@ -5,6 +5,7 @@ import { DataService } from "../data.service";
 import { DB } from "../db.service";
 
 import algoliasearch  from 'algoliasearch/lite';
+
 // class Chat implements IChat {}
 const searchClient = algoliasearch(
   'ZMW795USLT',
@@ -29,7 +30,7 @@ export class ChatComponent implements AfterViewInit {
   }
 
   config = {
-    indexName: 'demo_ecommerce',
+    indexName: 'chatName',
     searchClient
   };
 

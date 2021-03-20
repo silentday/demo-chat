@@ -1,10 +1,12 @@
 import { Component, Inject, forwardRef, Input, Output, EventEmitter } from '@angular/core';
+import { MatAutocomplete, MatAutocompleteTrigger } from '@angular/material/autocomplete';
 import { BaseWidget, NgAisInstantSearch } from 'angular-instantsearch';
 import { connectAutocomplete } from 'instantsearch.js/es/connectors';
 
 @Component({
   selector: 'app-autocomplete',
-  template: './chat-name-search.component.html'
+  templateUrl: './chat-name-search.component.html',
+  styleUrls: ['./chat-name-search.component.css']
 })
 export class ChatNameSearchComponent extends BaseWidget {
   state: {
@@ -29,5 +31,13 @@ export class ChatNameSearchComponent extends BaseWidget {
   public ngOnInit() {
     this.createWidget(connectAutocomplete, {});
     super.ngOnInit();
+  }
+
+  isSearchOpen(event: Event, trigger: MatAutocompleteTrigger)  {
+    event.stopPropagation();
+    const activateRegEx = new RegExp('/@/')
+    if (activateRegEx.test(((event.target) as HTMLInputElement).value)){
+      trigger.openPanel();
+    }
   }
 }

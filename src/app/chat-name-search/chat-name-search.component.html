@@ -12,10 +12,10 @@
     <div *ngFor="let index of state.indices || []">
       <mat-option
         *ngFor="let option of index.hits"
-        [value]="option.name"
-        (click)="onQuerySuggestionClick.emit({ query: option.name })"
+        [value]="option.chatName"
+        (click)="onQuerySuggestionClick.emit({ query: option.chatName })"
       >
-        {{ option.name }}
+        {{ option.chatName }}
       </mat-option>
     </div>
   </mat-autocomplete>
